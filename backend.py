@@ -1,8 +1,19 @@
 import streamlit as st
 import pandas as pd
 
+ 
+st.write(pd.read_csv('graph data.csv'))
+
 # 假设你有一个数据框 df，包含了名字（name）和相关的列
-data = pd.read_csv('graph data.csv')
+uploaded_file = st.file_uploader("upload your graph in the format like the table below (in csv)", type=["csv"])
+
+if uploaded_file is not None:
+    # 读取上传的文件
+    data = pd.read_csv(uploaded_file)  
+else:
+    data = pd.read_csv('graph data.csv')
+    st.write('upload is unsuccessful, default data is used')
+ 
 df = pd.DataFrame(data)
 st.write(df)
 # 在Streamlit应用中创建一个下拉菜单，用于选择一个名字
