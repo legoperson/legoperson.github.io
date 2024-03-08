@@ -13,7 +13,10 @@ selected_row = df[df['properties'] == selected_name]
 
 # 显示相应行等于1的列
 st.write(f"Property with the name {selected_name} is similar to these properties in rental price:")
-st.write(selected_row.loc[:, selected_row.eq(1).any()])
+#st.write(selected_row.loc[:, selected_row.eq(1).any()])
+df2 = selected_row.loc[:, selected_row.eq(1).any()]
+st.write(df2.columns)
+
 
 
  
