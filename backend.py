@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
- 
+st.write('exampled data') 
 st.write(pd.read_csv('graph data.csv'))
 
 # 假设你有一个数据框 df，包含了名字（name）和相关的列
@@ -9,13 +9,14 @@ uploaded_file = st.file_uploader("upload your graph in the format like the table
 
 if uploaded_file is not None:
     # 读取上传的文件
-    data = pd.read_csv(uploaded_file)  
+    df = pd.read_csv(uploaded_file)  
 else:
-    data = pd.read_csv('graph data.csv')
+    df = pd.read_csv('graph data.csv')
     st.write('upload is unsuccessful, default data is used')
  
-df = pd.DataFrame(data)
+st.write('uploaded file is')
 st.write(df)
+
 # 在Streamlit应用中创建一个下拉菜单，用于选择一个名字
 selected_name = st.selectbox('Select a property:', df['properties'])
 
